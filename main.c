@@ -8,7 +8,7 @@
 int main() {
 	int** resultmedian;
 	int arr[244][310];
-	//Add csv file into 2d-array
+	//Add noisy.csv file into 2d-array
 	FILE* csvFile = fopen("noisy.csv", "r");
 
 	if (!csvFile) {
@@ -16,14 +16,15 @@ int main() {
 		exit(1);
 	}
 
-	//Save the value from csv file into 2d-array
+	//Creating border
 	for (int i = 0; i <= 243; i++) {
 		arr[i][0] = arr[i][309] = 0;
 		for (int j = 0; j <= 309; j++) {
 			arr[0][j] = arr[243][j] = 0;
 		}
 	}
-
+	
+	//Save the value from noisy.csv file into 2d-array
 	char line[1500];
 	
 	for (int i = 1; i < 243; i++) {	
