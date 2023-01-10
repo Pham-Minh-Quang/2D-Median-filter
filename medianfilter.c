@@ -9,7 +9,7 @@ int** MedianFilter(int arr[244][310]) {
 
 	result = malloc(sizeof(int*) * 242); //Dynamically allocate space for an array of pointer to each row of data
 
-	for (int i = 0; i < 300; i++) {
+	for (int i = 0; i < 242; i++) {
 		//Each pointer point to a double is going to a row of data and that row of data needs to store double for each column
 		result[i] = malloc(sizeof(int) * 308);
 	}
