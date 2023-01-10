@@ -54,7 +54,42 @@ int main() {
 		fprintf(fpt,"\n");
 	}
 	fclose(fpt);
+	
+	//Test - Check again
+	int arrtest[242][308];
+	int test = 0;
 
+	FILE* check = fopen("clean.csv", "r");
+
+	if (!check) {
+		printf("Unable to open the file!");
+		exit(1);
+	}
+
+	//Save the value from noisy.csv file into 2d-array
+	char linecheck[1500];
+	
+	for (int i = 0; i < 242; i++) {
+		if (fgets(linecheck, sizeof(linecheck), csvFile) != NULL) {
+			char* tokencheck = strtok(linecheck, ","); //Start the new line
+			for (int j = 0; j < 308; j++) {
+				arrtest[i][j] = atoi(tokencheck);
+				if ((tokencheck = strtok(NULL, ",")))
+					continue;
+			}
+		}
+	}
+	fclose(check);
+
+	for (int i = 0; i < 242; i++) {
+		for (int j = 0; j < 308; j++) {
+			if (arrtest[i][j] == resultmedian[i][j])
+				test++;
+			else
+				printf("Position %d and %d is different",i,j);
+		}
+	}
+	printf("%d", test);
 	return 0;
 }
 			
